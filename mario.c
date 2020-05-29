@@ -13,20 +13,20 @@ int main(void)
     }while(n<1 || n>8);
     
     //Displaying the blocks
-    for(int i=0;i<n;i++)
+    for(int i = 0; i < n; i++)
     {
-        for(int j=n-i; j>=0; j--)
+        for(int j = n - i; j >= 0; j--)
         {
             printf(" "); 
         }
-        for(int j=0;j<=i;j++)
+        for(int j = 0; j <= i; j++)
         {
             printf("#");
         }
         
         printf("  ");
         
-        for(int j=0;j<=i;j++)
+        for(int j = 0 ;j <= i; j++)
         {
             printf("#");
         }
