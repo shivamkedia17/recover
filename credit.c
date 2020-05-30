@@ -50,17 +50,10 @@ bool check(long card_no)
 
 string type(long card_no)
 {
-    if (card_no / 10000000000000000 == 0)
+    if (card_no / 10000000000000 == 0)
     {
-        int x = card_no / 100000000000000;
-        for (int i = 1; i <= 5; i++)
-        {
-            if (x == 50 + i)
-            {
-                return "MASTERCARD\n";
-            }
-        }
-        if (x / 10 == 4)
+        int x = card_no / 1000000000000000;
+        if (x == 4)
         {
             return "VISA\n";
         }
@@ -73,10 +66,17 @@ string type(long card_no)
             return "AMEX\n";
         }
     }
-    else if (card_no / 10000000000000 == 0)
+    else if (card_no / 10000000000000000 == 0)
     {
-        int x = card_no / 1000000000000000;
-        if (x == 4)
+        int x = card_no / 100000000000000;
+        for (int i = 1; i <= 5; i++)
+        {
+            if (x == 50 + i)
+            {
+                return "MASTERCARD\n";
+            }
+        }
+        if (x / 10 == 4)
         {
             return "VISA\n";
         }
