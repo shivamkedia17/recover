@@ -41,9 +41,9 @@ int main(void)
     //Stores total no. of sentences
     int ns = sentences(l, text);
     //Calculates and stores the no. of letters per 100 words
-    float L = nl * 100 / nw;
+    float L = nl * 100 / (float) nw;
     //Calculates and stores the no. of sentences per 100 words
-    float S = ns * 100 / nw;
+    float S = ns * 100 / (float) nw;
     //Formula for calculating the grade of a given block of text
     float index = 0.0588 * L - 0.296 * S - 15.8;
 
