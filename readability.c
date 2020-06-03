@@ -41,10 +41,10 @@ int main(void)
     //Stores total no. of sentences
     int ns = sentences(l, text);
     //Calculates and stores the no. of letters per 100 words
-    float L = nl * 100 / nw; 
+    float L = nl * 100 / nw;
     //Calculates and stores the no. of sentences per 100 words
     float S = ns * 100 / nw;
-    //Formula for calculating the grade of a given block of text 
+    //Formula for calculating the grade of a given block of text
     float index = 0.0588 * L - 0.296 * S - 15.8;
 
     /*
@@ -56,7 +56,7 @@ int main(void)
 
     //Displays the number of sentence(s)
     printf("%i sentence(s)\n", ns);
-    */  
+    */
     if (index < 1)
     {
         printf("Before Grade 1\n");
@@ -64,7 +64,7 @@ int main(void)
     else if (index >= 16)
     {
         printf("Grade 16+\n");
-        
+
     }
     else
     {
@@ -75,7 +75,7 @@ int main(void)
 int letters(int l, string s)
 {
     int n = 0;
-    for (int i = 0; i < l; i++ )
+    for (int i = 0; i < l; i++)
     {
         if (isalpha(s[i]) != 0)
         {
@@ -88,7 +88,7 @@ int letters(int l, string s)
 int words(int l, string s)
 {
     int n = 0;
-    for (int i = 0; i < l; i++ )
+    for (int i = 0; i < l; i++)
     {
         if (isspace(s[i]) != 0)
         {
@@ -101,9 +101,9 @@ int words(int l, string s)
 int sentences(int l, string s)
 {
     int n = 0;
-    for (int i = 0; i < l; i++ )
+    for (int i = 0; i < l; i++)
     {
-        if(s[i] == '?' || s[i] == '!' || s[i] == '.')
+        if (s[i] == '?' || s[i] == '!' || s[i] == '.')
         {
             n++;
         }
