@@ -17,6 +17,15 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters.\n");
         return 1;
     }
+    for (int i = 0; i < 26; i++)
+    {
+        if (isalpha(argv[1][i]) == 0)
+        {
+            printf("Invalid Characters in key.");
+            return 1;
+        }
+    }
+    
     string input = get_string("plaintext:  ");
     for (int i=0; i < 25; i++)
     {
