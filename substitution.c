@@ -25,9 +25,9 @@ int main(int argc, string argv[])
             return 1;
         }
 
-        for (int j = 0; j < 26; i++)
+        for (int j = i+1; j < 26; i++)
         {
-            if (argv[1][i] == argv[1][j] && i!=j )
+            if (argv[1][i] == argv[1][j] ) //&& i!=j )
             {
                 printf("Duplicate Characters in key.");
                 return 1;
