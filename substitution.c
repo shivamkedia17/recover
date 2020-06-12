@@ -24,6 +24,7 @@ int main(int argc, string argv[])
             printf("Invalid Characters in key.");
             return 1;
         }
+        /*
         for (int j = 0; j < 26; i++)
         {
             if (argv[1][i] == argv[1][j])
@@ -32,10 +33,11 @@ int main(int argc, string argv[])
                 return 1;
             }
         }
+        */
     }
 
     string input = get_string("plaintext:  ");
-    for (int i=0; i < 25; i++)
+    for (int i = 0; i < 26; i++)
     {
         argv[1][i] = toupper(argv[1][i]);
     }
