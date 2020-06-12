@@ -24,16 +24,16 @@ int main(int argc, string argv[])
             printf("Invalid Characters in key.");
             return 1;
         }
-        /*
+
         for (int j = 0; j < 26; i++)
         {
-            if (argv[1][i] == argv[1][j])
+            if (argv[1][i] == argv[1][j] && i!=j )
             {
                 printf("Duplicate Characters in key.");
                 return 1;
             }
         }
-        */
+
     }
 
     string input = get_string("plaintext:  ");
