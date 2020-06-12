@@ -17,12 +17,12 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters.\n");
         return 1;
     }
-    string input = get_string("plaintext :  ");
+    string input = get_string("plaintext:  ");
     for (int i=0; i < 25; i++)
     {
         argv[1][i] = toupper(argv[1][i]);
     }
-    printf("ciphertext : %s\n", cipher(input, argv[1]));
+    printf("ciphertext: %s\n", cipher(input, argv[1]));
     return 0;
 }
 
