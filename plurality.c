@@ -74,8 +74,6 @@ bool vote(string name)
             return true;
         }
     }
-
-    // TODO
     return false;
 }
 
