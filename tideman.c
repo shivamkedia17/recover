@@ -179,7 +179,7 @@ void sort_pairs(void) //Error
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
-void lock_pairs //Error
+void lock_pairs(void) //Error
 {
     for (int i = 0; i < pair_count - 1; i++)
     {
