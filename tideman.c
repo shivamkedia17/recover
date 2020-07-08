@@ -186,7 +186,7 @@ void lock_pairs(void) //Error
 // Print the winner of the election
 void print_winner(void) //Error
 {
-    bool check = true;
+    bool source = true;
     printf("The winner(s) is: \n");
     for (int i = 0; i < pair_count; i++)
     {
@@ -194,10 +194,10 @@ void print_winner(void) //Error
         {
             if (locked[pairs[i].winner][pairs[i].loser] == true && locked[pairs[j].winner][pairs[i].winner] == true)
             {
-                check = false;
+                 source = false;
             }
         }
-        if (check == true)
+        if (source == true)
         {
             printf("%s", candidates[pairs[i].winner]);
         }
