@@ -112,7 +112,7 @@ bool vote(int rank, string name, int ranks[])
 }
 
 // Update preferences given one voter's ranks
-void record_preferences(int ranks[]) 
+void record_preferences(int ranks[])
 {
     for (int i = 0; i < candidate_count - 1; i++)
     {
@@ -151,18 +151,18 @@ void sort_pairs(void) //Error
 {
     for (int i = 0; i < pair_count - 1; i++)
     {
-        int min = i;
+        int max = i;
         for (int j = i + 1; j < pair_count; j++)
         {
-            if (preferences[pairs[min].winner][pairs[min].loser] > preferences[pairs[j].winner][pairs[j].loser])
+            if (preferences[pairs[max].winner][pairs[max].loser] < preferences[pairs[j].winner][pairs[j].loser])
             {
-                min = j;
+                max = j;
             }
         }
 
         pair temp = pairs[i];
-        pairs[i] = pairs[min];
-        pairs[min] = temp;
+        pairs[i] = pairs[max];
+        pairs[max] = temp;
     }
     return;
 }
