@@ -112,7 +112,7 @@ bool vote(int rank, string name, int ranks[])
 }
 
 // Update preferences given one voter's ranks
-void record_preferences(int ranks[])
+void record_preferences(int ranks[]) //Error
 {//confusion
     for (int i = 0; i < candidate_count; i++)
     {
@@ -158,7 +158,7 @@ void add_pairs(void)
 }
 
 // Sort pairs in decreasing order by strength of victory
-void sort_pairs(void)
+void sort_pairs(void) //Error
 {
     for (int i = 0; i < pair_count - 1; i++)
     {
@@ -179,7 +179,7 @@ void sort_pairs(void)
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
-void lock_pairs(void)
+void lock_pairs //Error
 {
     for (int i = 0; i < pair_count - 1; i++)
     {
@@ -192,7 +192,7 @@ void lock_pairs(void)
 }
 
 // Print the winner of the election
-void print_winner(void)
+void print_winner(void) //Error
 {
     bool check = true;
     printf("The winner(s) is: \n");
