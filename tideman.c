@@ -186,9 +186,9 @@ void lock_pairs(void) //Error - 2 of 2
 // Print the winner of the election
 void print_winner(void) //Error - 1 of 2
 {
-    bool source = true;
     for (int i = 0; i < candidate_count; i++)
     {
+        bool source = true;
         for (int j = 0; j < candidate_count; j++)
         {
             if (locked[j][i] == true)
