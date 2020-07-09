@@ -168,7 +168,7 @@ void sort_pairs(void)
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
-void lock_pairs(void) //Error
+void lock_pairs(void) //Error - 2 of 2
 {
     for (int i = 0; i < pair_count; i++)
     {
@@ -176,7 +176,7 @@ void lock_pairs(void) //Error
         {
             if (!(locked[pairs[i].loser][j] == true && locked[j][pairs[i].winner] == true))
             {
-                    locked[pairs[i].winner][pairs[i].loser] = true;
+                locked[pairs[i].winner][pairs[i].loser] = true;
             }
         }
     }
@@ -184,7 +184,7 @@ void lock_pairs(void) //Error
 }
 
 // Print the winner of the election
-void print_winner(void) //Error
+void print_winner(void) //Error - 1 of 2
 {
     bool source = true;
     for (int i = 0; i < candidate_count; i++)
