@@ -172,11 +172,11 @@ void lock_pairs(void) //Error
 {
     for (int i = 0; i < pair_count; i++)
     {
-        for (int j = 0; j < pair_count; j++)
+        for (int j = 0; j < candidate_count; j++)
         {
-            if (locked[pairs[j].winner][pairs[i].winner] == false && locked[pairs[i].loser][pairs[j].loser] == false)
+            if (!(locked[pairs[i].loser][j] == true && locked[j][pairs[i].winner] == true))
             {
-                locked[pairs[i].winner][pairs[i].loser] = true;
+                    locked[pairs[i].winner][pairs[i].loser] = true;
             }
         }
     }
@@ -187,19 +187,19 @@ void lock_pairs(void) //Error
 void print_winner(void) //Error
 {
     bool source = true;
-    printf("The winner(s) is: \n");
-    for (int i = 0; i < pair_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < pair_count; j++)
+        for (int j = 0; j < candidate_count; j++)
         {
-            if (locked[pairs[i].winner][pairs[i].loser] == true && locked[pairs[j].winner][pairs[i].winner] == true)
+            if (locked[j][i] == true)
             {
-                 source = false;
+                source = false;
+                break;
             }
         }
         if (source == true)
         {
-            printf("%s", candidates[pairs[i].winner]);
+            printf("%s\n", candidates[i]);
         }
     }
     return;
