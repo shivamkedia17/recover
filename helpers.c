@@ -1,6 +1,8 @@
 #include "helpers.h"
 #include <math.h>
 
+int set(float x);
+
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -9,11 +11,11 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             //Finding average of Red, Green and Blue values
-            BYTE average = (image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3;
+            float average = (image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3.0f;
             //Assigning the same value to Red, Green and Blue
-            image[i][j].rgbtRed = average;
-            image[i][j].rgbtGreen = average;
-            image[i][j].rgbtBlue = average;
+            image[i][j].rgbtRed = set(average);
+            image[i][j].rgbtGreen = set(average);
+            image[i][j].rgbtBlue = set(average);
         }
     }
     return;
@@ -121,3 +123,14 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
+int set(float x)
+{
+    if (x > 255)
+    {
+        return 255;
+    }
+    else
+    {
+        return (int)round(x);
+    }
+}
