@@ -53,9 +53,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     typedef struct
     {
-        int red;
-        int green;
-        int blue;
+        float red;
+        float green;
+        float blue;
     }
     SUM;
 
@@ -65,7 +65,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         {
             SUM sum;
             sum.red = sum.blue = sum.green = 0;
-            int count = 0;
+            float count = 0;
             int start_i, end_i, start_j, end_j;
             //TODO;
             if (i == 0)
@@ -109,9 +109,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     count++;
                 }
             }
-            image[i][j].rgbtRed = sum.red / count;
-            image[i][j].rgbtGreen = sum.green / count;
-            image[i][j].rgbtBlue = sum.blue / count;
+            image[i][j].rgbtRed = set(sum.red / count);
+            image[i][j].rgbtGreen = set(sum.green / count);
+            image[i][j].rgbtBlue = set(sum.blue / count);
         }
     }
     return;
