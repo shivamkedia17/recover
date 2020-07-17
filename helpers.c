@@ -1,4 +1,5 @@
 #include "helpers.h"
+#include <stdio.h>
 #include <math.h>
 
 int set(float x);
@@ -98,20 +99,41 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 start_j = j - 1;
                 end_j = j + 1;
             }
-
+            if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+            {
+                printf("Pixel: %i,%i\n", i, j);
+                printf("\n");
+            }
             for (int k = start_i; k <= end_i; k++)
             {
                 for (int l = start_j; l <= end_j; l++)
                 {
+                    if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+                    {
+                        printf("%f %f %f\n", sum.red, sum.green, sum.blue);
+                        printf("Count: %f\n", count);
+                    }
                     sum.red += image[k][l].rgbtRed;
                     sum.green += image[k][l].rgbtGreen;
                     sum.blue += image[k][l].rgbtBlue;
                     count++;
+                    if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+                    {
+                        printf("%hhu %hhu %hhu\n", image[k][l].rgbtRed, image[k][l].rgbtGreen, image[k][l].rgbtBlue);
+                        printf("%f %f %f\n", sum.red, sum.green, sum.blue);
+                        printf("Count: %f\n", count);
+                        printf("\n");
+                    }
                 }
             }
             image[i][j].rgbtRed = set(sum.red / count);
             image[i][j].rgbtGreen = set(sum.green / count);
             image[i][j].rgbtBlue = set(sum.blue / count);
+            if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+            {
+                printf("%hhu %hhu %hhu\n", image[i][j].rgbtRed, image[i][j].rgbtGreen, image[i][j].rgbtBlue);
+                printf("\n");
+            }
         }
     }
     return;
