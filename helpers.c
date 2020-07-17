@@ -81,9 +81,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     typedef struct
     {
-        float red;
-        float green;
-        float blue;
+        int red;
+        int green;
+        int blue;
     }
     SUM;
 
@@ -93,18 +93,18 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         {
             SUM sum;
             sum.red = sum.blue = sum.green = 0;
-            float count = 0;
+            int count = 0;
             int start_i, end_i, start_j, end_j;
             //TODO;
             if (i == 0)
             {
-                start_i = 0;
-                end_i = 1;
+                start_i = i;
+                end_i = i + 1;
             }
             else if (i == height - 1)
             {
-                start_i = height - 2;
-                end_i = height - 1;
+                start_i = i - 1;
+                end_i = i;
             }
             else
             {
@@ -113,55 +113,52 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             }
             if (j == 0)
             {
-                start_j = 0;
-                end_j = 1;
+                start_j = j;
+                end_j = j + 1;
             }
             else if (j == width - 1)
             {
-                start_j = width - 2;
-                end_j = width - 1;
+                start_j = j - 1;
+                end_j = j;
             }
             else
             {
                 start_j = j - 1;
                 end_j = j + 1;
             }
-            /*
-            if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+            /*if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
             {
                 printf("Pixel: %i,%i\n", i, j);
                 printf("\n");
-            }
-            */
+            }*/
             for (int k = start_i; k <= end_i; k++)
             {
                 for (int l = start_j; l <= end_j; l++)
                 {
-                    /*
-                    if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+                    /*if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
                     {
-                        printf("%f %f %f\n", sum.red, sum.green, sum.blue);
-                        printf("Count: %f\n", count);
-                    }
-                    */
+                        printf("%i %i %i\n", sum.red, sum.green, sum.blue);
+                        printf("Count: %i, k:%i l:%i\n", count, k, l);
+                    }*/
+                    count++;
                     sum.red += image[k][l].rgbtRed;
                     sum.green += image[k][l].rgbtGreen;
                     sum.blue += image[k][l].rgbtBlue;
-                    count++;
-                    /*
-                    if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
+
+                    /*if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
                     {
                         printf("%hhu %hhu %hhu\n", image[k][l].rgbtRed, image[k][l].rgbtGreen, image[k][l].rgbtBlue);
-                        printf("%f %f %f\n", sum.red, sum.green, sum.blue);
-                        printf("Count: %f\n", count);
+                        printf("%i %i %i\n", sum.red, sum.green, sum.blue);
+                        printf("Count: %i\n", count);
                         printf("\n");
-                    }
-                    */
+                    }*/
                 }
             }
-            image[i][j].rgbtRed = set(sum.red / count);
-            image[i][j].rgbtGreen = set(sum.green / count);
-            image[i][j].rgbtBlue = set(sum.blue / count);
+            image[i][j].rgbtRed = set((float)sum.red / count);
+            image[i][j].rgbtGreen = set((float)sum.green / count);
+            image[i][j].rgbtBlue = set((float)sum.blue / count);
+            sum.red = sum.blue = sum.green = 0;
+            count = 0;
             /*
             if ((i==height-1 &&(j%100==0 || j == 0)) || (i == 0 &&(j==0 || j % 100 == 0)) || (j==width-1 && (i==0 || i % 100 == 0)) || (i % 100 == 0 && j % 100 == 0))
             {
