@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
             bytes[j] = &chunk[j];
         }
 
-        //Condition for jpeg
+        //Condition for jpeg image
         if (*bytes[0] == 0xff && *bytes[1] == 0xd8 && *bytes[2] == 0xff && (*bytes[3] & 0xf0) == 0xe0)
         {
             char *filename = "";
